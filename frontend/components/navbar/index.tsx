@@ -147,7 +147,7 @@ export default function WithSubnavigation() {
                     <IconButton
                         onClick={() => setOpenSearch(!OpenSearch)}
                         icon={
-                            <AiOutlineSearch size={{ base: 'xs', lg: 'md' }} />
+                            <Icon as={AiOutlineSearch} boxSize={{ base: '2rem', lg: '3rem' }} />
                         }
                         variant={'ghost'}
                         aria-label={'Toggle Navigation'}

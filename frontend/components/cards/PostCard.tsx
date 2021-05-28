@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { BsCalendar, BsPencil } from "react-icons/bs";
 import { AiFillPlayCircle } from "react-icons/ai";
 import {getUrlImage,formatDatePublic} from '../../helpers/commonFuction';
+import { colors } from '../../styles/theme';
 
 
 interface Props extends FlexProps {
@@ -57,6 +58,9 @@ const PostCard = ({ idArticle, article }: Props) => {
       
         </Box>
 
+
+
+
         <Box w={{ lg: "100%" }} display={{base:'flex',lg:'none'}}>
           <Image
             objectFit="cover"
@@ -69,39 +73,27 @@ const PostCard = ({ idArticle, article }: Props) => {
 
 
 
-        <HStack  justify="center" pos="absolute" pl="65%"  h="100%" w="full">
-          <Box py={20} px={6} pt="4%" maxW={{ base: "xl", lg: "5xl" }} textAlign="left" w={{ lg: "80%" }}>
+        <HStack color={colors.primary} pl="10px" justify="center" pl={{base:"0px",lg:"65%"}} pos="absolute" top={{base:"8px",lg:"30"}} w="full">
+          <Box py={20} px={6} maxW={{ base: "xl", lg: "5xl" }} textAlign={{base:"center",lg:"left"}} w={{ lg: "80%" }}>
             <chakra.h1
-            data-aos="fade-left"
+            fontFamily="Playfair"
+              data-aos="fade-left"
               fontSize={{ base: "2xl", md: "3xl" }}
-              color="white"
+              
               fontWeight="bold"
             >
               {article.title}
             </chakra.h1>
-            {/* <chakra.p mt={4} c color="white">
-         {title}
-          </chakra.p> */}
-            <Box textAlign="center" alignItems="center" px={6} py={3}  data-aos="fade-left">
-              <Box>
-                <Flex>
-                  <Icon as={BsCalendar} h={6} w={6} color="white" />
-                  <chakra.h2 mx={3} color="white" fontWeight="bold" fontSize="lg">
-                    {formatDatePublic(article.public_date)}
+            <Box textAlign="left" alignItems="center" py={3}  data-aos="fade-left">
+              
+             
+                  <chakra.h2 mx={3} fontWeight="bold" fontSize="lg">
+                    {article.summary}
                   </chakra.h2>
-                </Flex>
-                <Flex>
-                  <Icon as={BsPencil} h={6} w={6} color="white" />
-                  <chakra.h2 mx={3} color="white" fontWeight="bold" fontSize="lg">
-                    {article.author}
-                  </chakra.h2>
-                </Flex>
-              </Box>
+              
             </Box>
           </Box>
-
         </HStack>
-        
       </Box>
     </Flex>
   );

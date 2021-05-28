@@ -39,13 +39,13 @@ const Footer: React.FC<Props> = () => {
                     </Box>
                     <VStack
                     pt={10}
-                    pl={10}
+                    pl={{base:"0", lg:"10px"}}
                         spacing={4}
                         align="stretch"
                     >{
                             FOOTER_LINKS.map(({ heading, link }: any) => {
                                 return (
-                                <Box textAlign="left"  >
+                                <Box textAlign="left" key={heading}  >
                                     <Link href={link}>
                                         <Text  fontSize={'1rem'} color={colors.primary}
                                             cursor="pointer"
@@ -72,14 +72,14 @@ const Footer: React.FC<Props> = () => {
                         {
                             SOCIAL_LINKS.map(({ heading, link }: any) => {
                                 return (
-                                <Flex textAlign="left"  >
+                                <Flex textAlign="left" key={heading} >
                                     {
-                                      heading==="Facebook" ?  <Icon as={FaFacebookF} w={5} h={4} mt={1}/> : (heading==="Instagram"?<Icon as={FaInstagram} w={5} h={4} mt={1}/>:
-                                      <Icon as={FaTwitter} w={5} h={4} mt={1}/>)
+                                      heading==="Facebook" ?  <Icon as={FaFacebookF} boxSize="1rem" mt={1}/> : (heading==="Instagram"?<Icon as={FaInstagram} boxSize="1rem" mt={1}/>:
+                                      <Icon as={FaTwitter} boxSize="1rem" mt={1}/>)
                                     }
                                     
                                     <Link href={link}>
-                                        <Text  fontSize={'1rem'} color={colors.primary}
+                                        <Text  fontSize={'1rem'} pl="2px" color={colors.primary}
                                             cursor="pointer"
                                             _hover={{ color:colors.primary, textDecoration: 'underline' }}>{heading}</Text>
                                     </Link>

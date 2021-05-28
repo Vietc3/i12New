@@ -69,8 +69,8 @@ const PostCard = ({ idArticle, article }: Props) => {
 
 
 
-        <HStack pl="10px" justify="center" pos="absolute" bottom="8px" w="full">
-          <Box py={20} px={6} maxW={{ base: "xl", lg: "5xl" }} textAlign="center" w={{ lg: "80%" }}>
+        <HStack  justify="center" pos="absolute" pl="65%"  h="100%" w="full">
+          <Box py={20} px={6} pt="4%" maxW={{ base: "xl", lg: "5xl" }} textAlign="left" w={{ lg: "80%" }}>
             <chakra.h1
             data-aos="fade-left"
               fontSize={{ base: "2xl", md: "3xl" }}
@@ -83,7 +83,7 @@ const PostCard = ({ idArticle, article }: Props) => {
          {title}
           </chakra.p> */}
             <Box textAlign="center" alignItems="center" px={6} py={3}  data-aos="fade-left">
-              <Center>
+              <Box>
                 <Flex>
                   <Icon as={BsCalendar} h={6} w={6} color="white" />
                   <chakra.h2 mx={3} color="white" fontWeight="bold" fontSize="lg">
@@ -96,20 +96,12 @@ const PostCard = ({ idArticle, article }: Props) => {
                     {article.author}
                   </chakra.h2>
                 </Flex>
-              </Center>
+              </Box>
             </Box>
           </Box>
 
         </HStack>
-        {
-          article.youtube_url ? <HStack pl="10px" justify="center" pos="absolute" bottom="20px" w="full">
-            <Spacer />
-            <Box>
-              <Icon mr="10px" as={AiFillPlayCircle} h="60px" w="60px" color="white" />
-            </Box>
-          </HStack> 
-          : null
-        }
+        
       </Box>
     </Flex>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Box, Flex, Text, HStack } from '@chakra-ui/react';
+import { Box, Flex, Text, HStack,Spacer, Center, } from '@chakra-ui/react';
 import PostCard from '../../cards/PostCard';
+import useColorTheme from '../../../hooks/useColorTheme';
 
 
 type Props = {
@@ -33,6 +34,8 @@ const TrendingCard = ({
         transition: "all .5s",
         ml: `-${currentSlide * 100}%`,
     };
+
+    const colors = useColorTheme();
 
     return (
         <>
@@ -93,14 +96,16 @@ const TrendingCard = ({
                         &#10095;
                     </Text>
 
-                    <HStack pl="10px" justify="left" pos="absolute" bottom="8px" w="full">
+                    <HStack  justify="center"  pos="absolute" bottom="10%" w="full">
+                        <Spacer/>
+                        <Center w="35%">
                         {Array.from({ length: slidesCount }).map((_, slide) => (
                             <Box
                                 key={`dots-${slide}`}
                                 cursor="pointer"
-                                boxSize={["4px", "20px"]}
+                                boxSize={["5px", "10px"]}
                                 m="0 2px"
-                                bg={currentSlide === slide ? 'white' : "blackAlpha.400"}
+                                bg={currentSlide === slide ? colors.primary : "blackAlpha.400"}
                                 rounded="50%"
                                 display="inline-block"
                                 transition="background-color 0.6s ease"
@@ -108,6 +113,8 @@ const TrendingCard = ({
                                 onClick={() => setSlide(slide)}
                             ></Box>
                         ))}
+                        </Center>
+                       
                     </HStack>
                 </Flex>
             </Flex>

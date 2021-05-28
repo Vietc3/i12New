@@ -1,12 +1,7 @@
 import React from 'react';
 import TrendingCard from '../components/views/homepage/Trending';
-import LastestCard from '../components/views/homepage/Lastest';
-import SubscribeForm from '../components/forms/SubscribeForm';
 import { GetStaticProps } from 'next';
 import { useGetArticles } from '../helpers/articles';
-import NewsletterForm from '../components/NewsletterForm';
-
-import { Box } from '@chakra-ui/react';
 import { NextSeo } from 'next-seo'
 
 type Props = {
@@ -19,7 +14,7 @@ const IndexPage = ({ articles, featured }: Props) => {
   return (<>
     <NextSeo
       title="Home"
-      description="This is homepage of PlayIt Right Blog Store"
+      description="This is homepage of i12 Katong"
       canonical="https://www.canonicalurl.ie/"
       openGraph={{
         url: 'https://www.canonicalurl.ie/',
@@ -38,20 +33,12 @@ const IndexPage = ({ articles, featured }: Props) => {
             height: 800,
             alt: 'Og Image Alt Second',
           },
-          { url: '/logo.png' },
-          { url: '/logo.png' },
+          { url: '/logo.Png' },
+          { url: '/logo.Png' },
         ],
       }}
     />
     <TrendingCard articles={featured} />
-    <LastestCard articles={articles} />
-    {/* <Box w="100%" display={{ base: "none", lg: "flex" }}>
-      <SubcribeForm marginY="10px" />
-    </Box>
-    <Box w="100%" display={{ base: "flex", lg: "none" }}>
-      <NewsletterForm />
-    </Box> */}
-
   </>
   );
 };

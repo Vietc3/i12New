@@ -1,49 +1,99 @@
 import React from 'react';
-import { Box, Center, /*Divider,*/ Flex, Text/*, useColorModeValue*/ } from '@chakra-ui/react';
+import { Box, Center, /*Divider,*/ Flex, Spacer, Text,Icon, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 import styles from '../constants/styles';
 import Logo from './Logo';
 import useColorTheme from '../hooks/useColorTheme';
-import { FOOTER_LINKS/*, FOOTER_BOTTOM_LINKS*/ } from '../constants';
+import { FOOTER_LINKS, SOCIAL_LINKS} from '../constants';
 
-interface Props {}
+import { FaFacebookF,FaInstagram,FaTwitter } from "react-icons/fa";
+interface Props { }
 
 const Footer: React.FC<Props> = () => {
     const colors = useColorTheme();
-  
+
     return (
         <Box
             as="footer"
             margin={0}
-        
+
             boxShadow="lg"
             paddingX={{ base: '.4rem', md: '1rem' }}
             paddingTop="1.4rem"
             bgColor="white"
             color={colors.primary}
         >
-            <Box maxW={styles.mainMaxWidth}  mx={'auto'} >
+            <Box maxW={styles.mainMaxWidth} mx={'auto'} >
                 <Flex
                     wrap="wrap"
                     w="100%"
                     direction={{ base: 'column', md: 'row' }}
                     pb="1.4rem"
                 >
-                        <Box padding={'2px'} _hover={{ textDecoration: 'underline' }} cursor="pointer">
-                                <Link href="/">
-                                <a>
-                                    <Logo  src="/logofooter.PNG" />
-                                    </a>
-                                </Link>
-                            </Box>
-                    <Flex direction={{ base: 'column', md: 'row' }}>
-              
-                    </Flex>
+                    <Box padding={'2px'} _hover={{ textDecoration: 'underline' }} cursor="pointer">
+                        <Link href="/">
+                            <a>
+                                <Logo src="/logofooter.PNG" />
+                            </a>
+                        </Link>
+                    </Box>
+                    <VStack
+                    pt={10}
+                    pl={10}
+                        spacing={4}
+                        align="stretch"
+                    >{
+                            FOOTER_LINKS.map(({ heading, link }: any) => {
+                                return (
+                                <Box textAlign="left"  >
+                                    <Link href={link}>
+                                        <Text  fontSize={'1rem'} color={colors.primary}
+                                            cursor="pointer"
+                                            _hover={{ color:colors.primary, textDecoration: 'underline' }}>{heading}</Text>
+                                    </Link>
+                                </Box>)
+                            })
+
+                        }
+
+
+                    </VStack>
+                    <Spacer/>
+                    <VStack
+                    pt={10}
+                    pl={10}
+                        spacing={4}
+                        align="stretch"
+                    > <Text fontSize={'15px'} 
+                    fontWeight="bold"
+                    color={colors.primary}>
+                    Follow Us
+                    </Text>
+                        {
+                            SOCIAL_LINKS.map(({ heading, link }: any) => {
+                                return (
+                                <Flex textAlign="left"  >
+                                    {
+                                      heading==="Facebook" ?  <Icon as={FaFacebookF} w={5} h={4} mt={1}/> : (heading==="Instagram"?<Icon as={FaInstagram} w={5} h={4} mt={1}/>:
+                                      <Icon as={FaTwitter} w={5} h={4} mt={1}/>)
+                                    }
+                                    
+                                    <Link href={link}>
+                                        <Text  fontSize={'1rem'} color={colors.primary}
+                                            cursor="pointer"
+                                            _hover={{ color:colors.primary, textDecoration: 'underline' }}>{heading}</Text>
+                                    </Link>
+                                </Flex>)
+                            })
+                        }
+                    </VStack>
+
+
                 </Flex>
-                <Center     borderTop="1px"
-            borderColor={colors.primary} bgColor="white" textAlign="center" flexDirection={{ base: 'column', md: 'row' }} h={10} >
+                <Center borderTop="1px"
+                    borderColor={colors.primary} bgColor="white" textAlign="center" flexDirection={{ base: 'column', md: 'row' }} h={10} >
                     <Text fontSize={'.9rem'} color={colors.primary}>
-                   © 2021 Keppel Land
+                        © 2021 Keppel Land
                     </Text>
                 </Center>
             </Box>

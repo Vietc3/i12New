@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "deals",
   "info": {
-    "name": "Articles",
-    "description": ""
+    "name": "Deals"
   },
   "options": {
     "increments": true,
@@ -18,11 +17,14 @@
     "summary": {
       "type": "text"
     },
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    },
     "body": {
       "type": "richtext"
-    },
-    "author": {
-      "type": "string"
     },
     "hero_desktop": {
       "model": "file",
@@ -47,21 +49,6 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
-    },
-    "public_date": {
-      "type": "date"
-    },
-    "youtube_url": {
-      "type": "string"
-    },
-    "featured": {
-      "type": "boolean"
-    },
-    "tags": {
-      "type": "text"
-    },
-    "products_relative": {
-      "type": "text"
     }
   }
 }

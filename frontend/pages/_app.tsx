@@ -10,6 +10,8 @@ import { css } from '@emotion/core';
 import { BounceLoader } from 'react-spinners';
 import AOS from 'aos';
 import 'aos/dist/aos.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
     Modal, ModalOverlay,
 } from '@chakra-ui/react';

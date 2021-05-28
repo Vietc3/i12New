@@ -1,16 +1,22 @@
 import React from 'react';
 import TrendingCard from '../components/views/homepage/Trending';
+import ListEvents from '../components/views/homepage/ListEvents';
+import ListDeals from '../components/views/homepage/ListDeals';
 import { GetStaticProps } from 'next';
-import { useGetArticles } from '../helpers/articles';
+import { useGetAllCarousels } from '../helpers/carousels';
+import { useGetAllEvents } from '../helpers/events';
+import { useGetAllDeals } from '../helpers/deals';
 import { NextSeo } from 'next-seo'
 
 type Props = {
   featured?: any;
-  articles?: any;
+  carousels?: any;
+  events?: any;
+  deals?: any;
   errors?: string;
 };
 
-const IndexPage = ({ articles, featured }: Props) => {
+const IndexPage = ({ carousels, events,deals }: Props) => {
   return (<>
     <NextSeo
       title="Home"
@@ -38,17 +44,20 @@ const IndexPage = ({ articles, featured }: Props) => {
         ],
       }}
     />
-    <TrendingCard articles={featured} />
+    <TrendingCard carousels={carousels} />
+    <ListEvents events={events} />
+    <ListDeals deals={deals} />
   </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
   try {
-    let data = await useGetArticles('featured=false&_sort=public_date:DESC&_limit=4');
-    let dataFeatured = await useGetArticles('featured=true');
+    let data = await useGetAllCarousels();
+    let event = await useGetAllEvents();
+    let deal = await useGetAllDeals();
 
-    return { props: { articles: data, featured: dataFeatured }, revalidate: 10 };
+    return { props: { carousels: data, events:event, deals:deal}, revalidate: 10 };
   } catch (err) {
     return { props: { errors: err.message } };
   }

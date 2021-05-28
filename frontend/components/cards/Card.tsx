@@ -11,7 +11,7 @@ const Card = ({ children, ...props }: Props) => {
             paddingX="1rem"
             paddingY=".5rem"
             boxShadow="sm"
-            borderWidth="0.1px"
+           
             {...props}
             backgroundColor={colors.background}
             borderColor={colors.border}

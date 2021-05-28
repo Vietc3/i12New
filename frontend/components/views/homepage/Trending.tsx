@@ -7,14 +7,13 @@ import useColorTheme from '../../../hooks/useColorTheme';
 type Props = {
     margin?: number;
     containerHeight?: number;
-    articles: any;
+    carousels: any;
 }
 const TrendingCard = ({
-    articles,
+    carousels,
 }: Props) => {
-
-  
-    const slides = articles;
+ 
+    const slides = carousels;
 
     const [currentSlide, setCurrentSlide] = useState(0);
     

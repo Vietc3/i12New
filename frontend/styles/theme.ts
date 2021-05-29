@@ -1,7 +1,6 @@
-import { createBreakpoints } from "@chakra-ui/theme-tools"
-
 export const colors = {
     primary: '#A68340',
+    green: '#004C45',
     default: {
         light: '#494949',
         dark: '#f0f0f0',

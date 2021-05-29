@@ -2,12 +2,14 @@ import React from 'react';
 import TrendingCard from '../components/views/homepage/Trending';
 import ListEvents from '../components/views/homepage/ListEvents';
 import ListDeals from '../components/views/homepage/ListDeals';
+import Instagrams from '../components/views/homepage/Instagrams';
 import Banner from '../components/banner/Banner';
 import { GetStaticProps } from 'next';
 import { useGetAllCarousels } from '../helpers/carousels';
 import { useGetAllEvents } from '../helpers/events';
 import { useGetAllDeals } from '../helpers/deals';
 import { useGetBanners } from '../helpers/banners';
+import { useGetInstagram } from '../helpers/instagram';
 import { NextSeo } from 'next-seo'
 
 type Props = {
@@ -15,11 +17,12 @@ type Props = {
   banners?: any;
   carousels?: any;
   events?: any;
+  instagrams?: any;
   deals?: any;
   errors?: string;
 };
 
-const IndexPage = ({ carousels, events,deals, banners }: Props) => {
+const IndexPage = ({ carousels, events,deals, banners,instagrams }: Props) => {
   return (<>
     <NextSeo
       title="Home"
@@ -51,18 +54,23 @@ const IndexPage = ({ carousels, events,deals, banners }: Props) => {
     <ListEvents events={events} />
     <ListDeals deals={deals} />
     <Banner banner={banners.banner_homepage} url={banners.url_banner_homepage}/>
+    <Instagrams  instagrams={instagrams} />
   </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
+
   try {
     let data = await useGetAllCarousels();
     let event = await useGetAllEvents();
     let deal = await useGetAllDeals();
     let banner = await useGetBanners();
+    let instagrams = await useGetInstagram();
+    console.log(instagrams);
+    
 
-    return { props: { carousels: data, events:event, deals:deal, banners:banner}, revalidate: 10 };
+    return { props: { carousels: data, events:event, deals:deal, banners:banner, instagrams:instagrams}, revalidate: 10 };
   } catch (err) {
     return { props: { errors: err.message } };
   }

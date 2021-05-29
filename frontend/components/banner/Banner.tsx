@@ -40,16 +40,12 @@ const Banner = ({
 
     return (
         <Card
+        mt="70px"
             onClick={() => onClickEvent()}
             justifyContent="flex-start"
             cursor="pointer"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            style={{ transform: `scale(${hover ? 1.1 : 1})` }}
-            transition="ease-in 0.2s"
             overflow="hidden"
             display="flex"
-            mt={5}
             p="0px"
             {...props}
             flexDirection={flexDirection}

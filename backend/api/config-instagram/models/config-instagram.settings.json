@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "config_instagrams",
+  "info": {
+    "name": "Config Instagram",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "access_token": {
+      "type": "text"
+    },
+    "id_instagram": {
+      "type": "string"
+    }
+  }
+}

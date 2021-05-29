@@ -28,7 +28,7 @@
       "pluginOptions": {}
     },
     "hero_mobile": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",

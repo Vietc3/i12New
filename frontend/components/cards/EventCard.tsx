@@ -60,7 +60,7 @@ const EventCard = ({
         >
             <Box  display={{ base: 'none', lg: 'flex' }}>
                 <Image
-                     width={{ base: '60%', lg: column ? '100%' : 60 }}
+                     width="100%"
                      height={{ base: 80, lg: column ? '15rem' : 40 }}
                      src={getUrlImage(event.hero_desktop.url)}
                     alt={'Photo of ' + event.title}
@@ -70,25 +70,25 @@ const EventCard = ({
             <Box  display={{ base: 'flex', lg: 'none' }}>
              
                 <Image
-                     width={{ base: '60%', lg: column ? '100%' : 60 }}
-                     height={{ base: 80, lg: column ? '15rem' : 40 }}
+                     width="100%"
+                     height={{ base: 60 }}
                      src={getUrlImage(event.hero_mobile.url)}
                     alt={'Photo of ' + event.title}
-                    // objectFit="cover"
-                    borderRadius={styles.borderRadius}
-                   
+                    // objectFit="cover" 
                 />
             </Box>
             <Box mt={{ base: 4, md: 4 }}  color={colors.primary}>
+                <Box h="50px">
                 <Text
                     fontWeight="bold"
                     textTransform="uppercase"
-                    fontSize="sm"
+                    fontSize="15px"
                     letterSpacing="wide"
-
                 >
                     {event.title}
                 </Text>
+                </Box>
+               
                 <Flex pt={5}>
                 <Icon as={AiFillCalendar} boxSize="2rem" mt={1}/>
                 <Text pl={1} mt={2} fontSize="md" >

@@ -3,6 +3,8 @@ import React from 'react';
 import useColorTheme from '../../../hooks/useColorTheme';
 import DealCard from '../../cards/DealCard';
 import Slider from "react-slick";
+import useWindowSize from '../../../hooks/useWindowSize';
+
 type Props = {
     deals: any;
     margin?: number;
@@ -14,8 +16,8 @@ const ListEvents = ({
 }: Props) => {
 
     const colors = useColorTheme();
-
-    const settings = {
+    const screenSize = useWindowSize();
+    const settings = screenSize.width >=950 ? {
         dots: true,
         infinite: true,
         slidesToShow: 4,
@@ -24,13 +26,39 @@ const ListEvents = ({
         speed: 5000,
         autoplaySpeed: 5000,
         cssEase: "linear"
-    };
+    } :( screenSize.width >=750 ? {
+        dots: true,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        speed: 5000,
+        autoplaySpeed: 5000,
+        cssEase: "linear"
+    } :(screenSize.width >=350 ? {
+        dots: true,
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        autoplay: true,
+        speed: 5000,
+        autoplaySpeed: 5000,
+        cssEase: "linear"
+    }:{
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        speed: 5000,
+        autoplaySpeed: 5000,
+        cssEase: "linear"
+    }));
 
     return (
         <>
             <Box as="section" pt="4%">
                 <Heading
-                    data-aos="fade-down-left"
                     transition="ease-in 0.15s"
                     fontSize="4xl"
                     bottom="30px"
@@ -51,7 +79,7 @@ const ListEvents = ({
                             />
                         </Box>))}
                 </Slider>
-                <Center mt="5%">
+                <Center mt={10}>
                     <Button bgColor="white" borderRadius={30} border="1px" borderColor={colors.primary}>
                        View All Deals
                     </Button>

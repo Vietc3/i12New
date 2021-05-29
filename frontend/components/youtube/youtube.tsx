@@ -5,9 +5,7 @@ interface Props {
 
 const YoutubeEmbed = ({ youtube_url }: Props) => {
     const id = getYouTubeID(youtube_url);
-
     return (
-       
         <iframe
           width="100%"
           height="100%"

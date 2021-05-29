@@ -52,6 +52,7 @@ const DealCard = ({
             style={{ transform: `scale(${hover ? 1.1 : 1})` }}
             transition="ease-in 0.2s"
             overflow="hidden"
+            h="100%"
             marginY=".5rem"
             display="flex"
             {...props}
@@ -60,7 +61,7 @@ const DealCard = ({
         >
             <Box  display={{ base: 'none', lg: 'flex' }}>
                 <Image
-                     width={{ base: '60%', lg: column ? '100%' : 60 }}
+                         width="100%"
                      height={{ base: 80, lg: column ? '15rem' : 40 }}
                      src={getUrlImage(deal.hero_desktop.url)}
                     alt={'Photo of ' + deal.title}
@@ -70,25 +71,24 @@ const DealCard = ({
             <Box  display={{ base: 'flex', lg: 'none' }}>
              
                 <Image
-                     width={{ base: '60%', lg: column ? '100%' : 60 }}
-                     height={{ base: 80, lg: column ? '15rem' : 40 }}
+                     width="100%"
+                     height={{ base: 60 }}
                      src={getUrlImage(deal.hero_mobile.url)}
                     alt={'Photo of ' + deal.title}
-                    // objectFit="cover"
-                    borderRadius={styles.borderRadius}
-                   
+                    // objectFit="cover" 
                 />
             </Box>
             <Box mt={{ base: 4, md: 4 }}  color={colors.primary}>
+            <Box h="50px">
                 <Text
                     fontWeight="bold"
                     textTransform="uppercase"
-                    fontSize="sm"
+                    fontSize="15px"
                     letterSpacing="wide"
-
                 >
                     {deal.title}
                 </Text>
+                </Box>
                 <Flex pt={5}>
                 <Icon as={AiFillCalendar} boxSize="2rem" mt={1}/>
                 <Text pl={1} mt={2} fontSize="md" >

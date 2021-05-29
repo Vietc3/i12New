@@ -40,7 +40,6 @@ const Banner = ({
 
     return (
         <Card
-        mt="70px"
             onClick={() => onClickEvent()}
             justifyContent="flex-start"
             cursor="pointer"

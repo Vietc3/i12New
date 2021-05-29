@@ -89,7 +89,7 @@ const EventCard = ({
                 </Text>
                 </Box>
                
-                <Flex pt={5}>
+                <Flex >
                 <Icon as={AiFillCalendar} boxSize="2rem" mt={1}/>
                 <Text pl={1} mt={2} fontSize="md" >
                     {`${vaildForm}-${validTo}`}

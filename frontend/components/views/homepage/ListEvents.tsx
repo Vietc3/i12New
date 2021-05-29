@@ -59,7 +59,7 @@ const ListEvents = ({
   
     return (
     <>
-        <Box  as="section" pt="4%">
+        <Box  as="section" pt="4%" pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}}>
             <Heading
                 transition="ease-in 0.15s"
                 fontSize="4xl"

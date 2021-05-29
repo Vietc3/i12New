@@ -59,7 +59,8 @@ const Instagrams = ({
   
     return (
     <>
-        <Box  as="section" pt="4%" h="600px" mt="70px" bgColor="#004C45">
+    <Box pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}}>
+    <Box  as="section" pt="4%" h="600px" mt="70px" bgColor="#004C45" >
             <Center>
             <Icon as={FaInstagram} boxSize="4rem" mt={1}/>
             </Center>
@@ -86,6 +87,8 @@ const Instagrams = ({
                     </Box>))}
             </Slider>
         </Box>
+    </Box>
+        
     </>
     )
 }

@@ -31,29 +31,29 @@ const IndexPage = ({ carousels, events,deals, banners,instagrams }: Props) => {
       openGraph={{
         url: 'https://www.canonicalurl.ie/',
         title: 'Home',
-        description: 'This is homepage of PlayIt Right Blog Store',
+        description: 'This is homepage of i12 Katong',
         images: [
           {
-            url: '/logo.png',
+            url: '/logo.PNG',
             width: 800,
             height: 600,
             alt: 'Og Image Alt',
           },
           {
-            url: '/logo.png',
+            url: '/logo.PNG',
             width: 900,
             height: 800,
             alt: 'Og Image Alt Second',
           },
-          { url: '/logo.Png' },
-          { url: '/logo.Png' },
+          { url: '/logo.PNG' },
+          { url: '/logo.PNG' },
         ],
       }}
     />
     <TrendingCard carousels={carousels} />
     <ListEvents events={events} />
     <ListDeals deals={deals} />
-    <Banner banner={banners.banner_homepage} url={banners.url_banner_homepage}/>
+    <Banner      mt="70px" pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}} banner={banners.banner_homepage} url={banners.url_banner_homepage}/>
     <Instagrams  instagrams={instagrams} />
   </>
   );
@@ -67,9 +67,6 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
     let deal = await useGetAllDeals();
     let banner = await useGetBanners();
     let instagrams = await useGetInstagram();
-    console.log(instagrams);
-    
-
     return { props: { carousels: data, events:event, deals:deal, banners:banner, instagrams:instagrams}, revalidate: 10 };
   } catch (err) {
     return { props: { errors: err.message } };

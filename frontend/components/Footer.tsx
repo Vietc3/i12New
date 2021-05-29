@@ -16,14 +16,14 @@ const Footer: React.FC<Props> = () => {
         <Box
             as="footer"
             margin={0}
-
+          
             boxShadow="lg"
-            paddingX={{ base: '.4rem', md: '1rem' }}
+           
             paddingTop="1.4rem"
             bgColor="white"
             color={colors.primary}
         >
-            <Box maxW={styles.mainMaxWidth} mx={'auto'} >
+            <Box maxW={styles.mainMaxWidth}   pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}} mx={'auto'} >
                 <Flex
                     wrap="wrap"
                     w="100%"

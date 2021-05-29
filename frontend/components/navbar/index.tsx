@@ -232,10 +232,11 @@ const DesktopNav = () => {
     return (
         <Stack direction={'row'} pt="1%">
             {NAV_ITEMS.map((navItem) => (
-                <Box key={navItem.label} >
-                    <Popover trigger={'hover'} placement={'bottom-start'}>
+                <Box key={navItem.label}  _focus={{borderBottom:"1.5px solid #A68340", borderTop:"0px", borderLeft:"0px", borderRight:"0px"}}>
+                    <Popover trigger={'hover'} placement={'bottom-start'} >
                         <PopoverTrigger>
                             <Link
+                            _focus={{borderBottom:"1.5px solid #A68340", borderTop:"0px", borderLeft:"0px", borderRight:"0px"}}
                                 p={2}
                                 href={navItem.href ?? '#'}
                                 fontSize={ screenSize.width <=1024 ? (screenSize.width <=768 ? "7px" : "10px"):"15px"}
@@ -466,8 +467,8 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
 
     {
-        label: 'WHAT ON',
-        href: '/',
+        label: `WHAT'S ON`,
+        href: `/whatsOn`,
     },
     {
         label: 'STORE DIRECTORY',
@@ -483,11 +484,11 @@ const NAV_ITEMS: Array<NavItem> = [
     },
     {
         label: 'ABOUT US',
-        href: '/videos',
+        href: '/aboutUs',
     },
     {
         label: 'CONTACT US',
-        href: '/videos',
+        href: '/contactUs',
     }
     // {
     //     label: 'PLAYITRIGHT STORE',

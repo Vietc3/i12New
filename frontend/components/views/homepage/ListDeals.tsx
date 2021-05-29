@@ -35,7 +35,7 @@ const ListEvents = ({
         speed: 5000,
         autoplaySpeed: 5000,
         cssEase: "linear"
-    } :(screenSize.width >=350 ? {
+    } :(screenSize.width >=400 ? {
         dots: true,
         infinite: true,
         slidesToShow: 2,
@@ -70,7 +70,7 @@ const ListEvents = ({
 
                 <Slider {...settings}>
                     {deals.map((deal: any) => (
-                        <Box pt="10%" key={'listEvent' + deal.id} >
+                        <Box pt={{base:'5%',lg:'10%'}} key={'listEvent' + deal.id} >
                             <DealCard
                                 column
                                 deal={deal}

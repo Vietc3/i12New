@@ -53,7 +53,7 @@ const IndexPage = ({ carousels, events,deals, banners,instagrams }: Props) => {
     <TrendingCard carousels={carousels} />
     <ListEvents events={events} />
     <ListDeals deals={deals} />
-    <Banner      mt="70px" pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}} banner={banners.banner_homepage} url={banners.url_banner_homepage}/>
+    <Banner     mt={{base:'20px',lg:'50px'}} pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}} banner={banners.banner_homepage} url={banners.url_banner_homepage}/>
     <Instagrams  instagrams={instagrams} />
   </>
   );

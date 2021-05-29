@@ -37,7 +37,7 @@ const Instagrams = ({
         speed: 5000,
         autoplaySpeed: 5000,
         cssEase: "linear"
-    } :(screenSize.width >=350 ? {
+    } :(screenSize.width >=400 ? {
         dots: true,
         infinite: true,
         slidesToShow: 2,
@@ -60,7 +60,7 @@ const Instagrams = ({
     return (
     <>
     <Box pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}}>
-    <Box  as="section" pt="4%" h="600px" mt="70px" bgColor="#004C45" >
+    <Box  as="section" pt="4%" h={{base:'500px',lg:'600px'}} mt={{base:'40px',lg:'70px'}} bgColor="#004C45" >
             <Center>
             <Icon as={FaInstagram} boxSize="4rem" mt={1}/>
             </Center>

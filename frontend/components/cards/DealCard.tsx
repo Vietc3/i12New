@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, BoxProps, Text, useBreakpointValue,Icon,Flex } from '@chakra-ui/react';
+import { Box, BoxProps, Text, useBreakpointValue, Icon, Flex } from '@chakra-ui/react';
 import useColorTheme from '../../hooks/useColorTheme';
 import styles from '../../constants/styles';
 import { useRouter } from 'next/router';
@@ -7,7 +7,7 @@ import Image from '../Image';
 import Card from './Card';
 import _ from 'lodash';
 import moment from 'moment';
-import { getUrlImage} from '../../helpers/commonFuction';
+import { getUrlImage } from '../../helpers/commonFuction';
 import { AiFillCalendar } from "react-icons/ai";
 
 interface Props extends BoxProps {
@@ -53,50 +53,50 @@ const DealCard = ({
             transition="ease-in 0.2s"
             overflow="hidden"
             h="100%"
-            marginY=".5rem"
+
             display="flex"
             {...props}
             flexDirection={flexDirection}
             color={colors.primary}
         >
-            <Box  display={{ base: 'none', lg: 'flex' }}>
+            <Box display={{ base: 'none', lg: 'flex' }}>
                 <Image
-                         width="100%"
-                     height={{ base: 80, lg: column ? '15rem' : 40 }}
-                     src={getUrlImage(deal.hero_desktop.url)}
+                    width="100%"
+                    height={{ base: 80, lg: column ? '15rem' : 40 }}
+                    src={getUrlImage(deal.hero_desktop.url)}
                     alt={'Photo of ' + deal.title}
-                    // objectFit="cover"      
+                // objectFit="cover"      
                 />
             </Box>
-            <Box  display={{ base: 'flex', lg: 'none' }}>
-             
+            <Box display={{ base: 'flex', lg: 'none' }}>
+
                 <Image
-                     width="100%"
-                     height={{ base: 60 }}
-                     src={getUrlImage(deal.hero_mobile.url)}
+                    width="100%"
+                    height={{ base: 60 }}
+                    src={getUrlImage(deal.hero_mobile.url)}
                     alt={'Photo of ' + deal.title}
-                    // objectFit="cover" 
+                // objectFit="cover" 
                 />
             </Box>
-            <Box mt={{ base: 4, md: 4 }}  color={colors.primary}>
-            <Box h="50px">
-                <Text
-                    fontWeight="bold"
-                    textTransform="uppercase"
-                    fontSize="15px"
-                    letterSpacing="wide"
-                >
-                    {deal.title}
-                </Text>
+            <Box mt={{ base: 4, md: 4 }} color={colors.primary}>
+                <Box h="50px">
+                    <Text
+                        fontWeight="bold"
+                        textTransform="uppercase"
+                        fontSize="15px"
+                        letterSpacing="wide"
+                    >
+                        {deal.title}
+                    </Text>
                 </Box>
                 <Flex >
-                <Icon as={AiFillCalendar} boxSize="2rem" mt={1}/>
-                <Text pl={1} mt={2} fontSize="md" >
-                    {`${vaildForm}-${validTo}`}
-                </Text>
+                    <Icon as={AiFillCalendar} boxSize="2rem" mt={1} />
+                    <Text pl={1} mt={2} fontSize="md" >
+                        {`${vaildForm}-${validTo}`}
+                    </Text>
 
                 </Flex>
-                
+
                 {/* <Text
                     mt={1}
                     display="block"

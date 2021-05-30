@@ -52,7 +52,6 @@ const EventCard = ({
             style={{ transform: `scale(${hover ? 1.1 : 1})` }}
             transition="ease-in 0.2s"
             overflow="hidden"
-            marginY=".5rem"
             display="flex"
             {...props}
             flexDirection={flexDirection}

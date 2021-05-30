@@ -4,7 +4,7 @@ import useColorTheme from '../../../hooks/useColorTheme';
 import DealCard from '../../cards/DealCard';
 import Slider from "react-slick";
 import useWindowSize from '../../../hooks/useWindowSize';
-
+import { useRouter } from 'next/router';
 type Props = {
     deals: any;
     margin?: number;
@@ -17,10 +17,16 @@ const ListEvents = ({
 
     const colors = useColorTheme();
     const screenSize = useWindowSize();
+
+    const router = useRouter();
+    const getAllDeals = () => {
+        router.push(`/whatsOn`);
+        window.scrollTo(0, 0);
+    };
     const settings = screenSize.width >=950 ? {
         dots: true,
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: deals.length>=4 ? 4 : deals.length,
         slidesToScroll: 1,
         autoplay: true,
         speed: 5000,
@@ -80,7 +86,7 @@ const ListEvents = ({
                         </Box>))}
                 </Slider>
                 <Center mt={10}>
-                    <Button bgColor="white" borderRadius={30} border="1px" borderColor={colors.primary}>
+                    <Button bgColor="white" onClick={()=>getAllDeals()} borderRadius={30} border="1px" borderColor={colors.primary}>
                        View All Deals
                     </Button>
                 </Center>

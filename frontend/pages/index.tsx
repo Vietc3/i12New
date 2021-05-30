@@ -6,8 +6,8 @@ import Instagrams from '../components/views/homepage/Instagrams';
 import Banner from '../components/banner/Banner';
 import { GetStaticProps } from 'next';
 import { useGetAllCarousels } from '../helpers/carousels';
-import { useGetAllEvents } from '../helpers/events';
-import { useGetAllDeals } from '../helpers/deals';
+import { useGetEventsByParams } from '../helpers/events';
+import { useGetDealsByParams } from '../helpers/deals';
 import { useGetBanners } from '../helpers/banners';
 import { useGetInstagram } from '../helpers/instagram';
 import { NextSeo } from 'next-seo'
@@ -63,8 +63,8 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 
   try {
     let data = await useGetAllCarousels();
-    let event = await useGetAllEvents();
-    let deal = await useGetAllDeals();
+    let event = await useGetEventsByParams('show_homepage=true');
+    let deal = await useGetDealsByParams('show_homepage=true');
     let banner = await useGetBanners();
     let instagrams = await useGetInstagram();
     return { props: { carousels: data, events:event, deals:deal, banners:banner, instagrams:instagrams}, revalidate: 10 };

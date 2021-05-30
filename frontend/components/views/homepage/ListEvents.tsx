@@ -4,7 +4,7 @@ import useColorTheme from '../../../hooks/useColorTheme';
 import EventCard from '../../cards/EventCard';
 import Slider from "react-slick";
 import useWindowSize from '../../../hooks/useWindowSize';
-
+import { useRouter } from 'next/router';
 type Props = {
     events: any;
     margin?: number;
@@ -16,13 +16,17 @@ const ListEvents = ({
 }: Props) => {
     
     const colors = useColorTheme();
-
     const screenSize = useWindowSize();
+    const router = useRouter();
+    const getAllEvents = () => {
+        router.push(`/whatsOn`);
+        window.scrollTo(0, 0);
+    };
 
     const settings = screenSize.width >=950 ? {
         dots: true,
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: events.length>=4 ? 4 : events.length,
         slidesToScroll: 1,
         autoplay: true,
         speed: 5000,
@@ -83,7 +87,7 @@ const ListEvents = ({
             </Slider>
 
             <Center mt={10}>
-                    <Button bgColor="white" borderRadius={30} border="1px" borderColor={colors.primary}>
+                    <Button bgColor="white" onClick={()=>getAllEvents()} borderRadius={30} border="1px" borderColor={colors.primary}>
                        View All Event
                     </Button>
                 </Center>

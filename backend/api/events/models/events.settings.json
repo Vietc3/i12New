@@ -50,6 +50,10 @@
     },
     "body": {
       "type": "richtext"
+    },
+    "show_homepage": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

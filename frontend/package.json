@@ -19,6 +19,7 @@
         "formik": "^2.2.6",
         "framer-motion": "^4.0.3",
         "get-youtube-id": "^1.0.1",
+        "google-map-react": "^2.1.9",
         "lodash": "^4.17.20",
         "markdown-to-jsx": "^7.1.2",
         "moment": "^2.29.1",

@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "config_about_uses",
+  "info": {
+    "name": "Config About Us",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Summary": {
+      "type": "richtext"
+    },
+    "getting_by_car": {
+      "type": "text"
+    },
+    "getting_by_train": {
+      "type": "text"
+    },
+    "getting_by_bus": {
+      "type": "text"
+    },
+    "charges_car": {
+      "type": "text"
+    },
+    "charges_motobike": {
+      "type": "text"
+    },
+    "concierge_services": {
+      "type": "text"
+    },
+    "amentities_wifi": {
+      "type": "text"
+    },
+    "amentities_nursing_room": {
+      "type": "text"
+    },
+    "amentities_charging_point": {
+      "type": "text"
+    },
+    "key_google_map": {
+      "type": "string"
+    }
+  }
+}

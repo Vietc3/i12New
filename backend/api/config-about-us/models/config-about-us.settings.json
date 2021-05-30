@@ -12,38 +12,38 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Summary": {
-      "type": "richtext"
-    },
-    "getting_by_car": {
+    "summary": {
       "type": "text"
     },
-    "getting_by_train": {
-      "type": "text"
+    "lat_location": {
+      "type": "string"
     },
-    "getting_by_bus": {
-      "type": "text"
-    },
-    "charges_car": {
-      "type": "text"
-    },
-    "charges_motobike": {
-      "type": "text"
-    },
-    "concierge_services": {
-      "type": "text"
-    },
-    "amentities_wifi": {
-      "type": "text"
-    },
-    "amentities_nursing_room": {
-      "type": "text"
-    },
-    "amentities_charging_point": {
-      "type": "text"
+    "long_location": {
+      "type": "string"
     },
     "key_google_map": {
       "type": "string"
+    },
+    "getting_by_bus": {
+      "type": "richtext"
+    },
+    "getting_by_car": {
+      "type": "richtext"
+    },
+    "getting_by_train": {
+      "type": "richtext"
+    },
+    "concierge_services": {
+      "type": "richtext"
+    },
+    "amentities_wifi": {
+      "type": "richtext"
+    },
+    "amentities_nursing_room": {
+      "type": "richtext"
+    },
+    "amentities_charging_point": {
+      "type": "richtext"
     }
   }
 }

@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "config_contact_uses",
+  "info": {
+    "name": "Config Contact Us"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "summary": {
+      "type": "richtext"
+    },
+    "mall_address": {
+      "type": "string"
+    },
+    "phone_customer_service": {
+      "type": "string"
+    },
+    "counter_operating_hours": {
+      "type": "richtext"
+    }
+  }
+}

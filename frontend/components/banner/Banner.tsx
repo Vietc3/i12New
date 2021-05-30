@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Box, BoxProps, useBreakpointValue,Icon } from '@chakra-ui/react';
+import { Box, BoxProps, useBreakpointValue } from '@chakra-ui/react';
 import useColorTheme from '../../hooks/useColorTheme';
-import styles from '../../constants/styles';
 import { useRouter } from 'next/router';
 import Image from '../Image';
 import Card from '../cards/Card';
@@ -30,12 +29,10 @@ const Banner = ({
     url,
     ...props
 }: Props) => {
-    const [hover, setHover] = useState(false);
     const colors = useColorTheme();
     const flexDirection: FlexDirection = useBreakpointValue({ base: 'column', md: column ? 'column' : 'row' });
-    const router = useRouter();
     const onClickEvent = () => {
-        window.location.replace(url);
+        window.open(url, '_blank');
     };
 
     return (
@@ -60,8 +57,6 @@ const Banner = ({
                     // objectFit="cover"      
                 />
             </Box>
-           
-          
         </Card>
     );
 };

@@ -11,18 +11,21 @@ const distanceToMouse = (pt:any, mp:any) => {
   }
 };
 
-const points = [
-  { id: 1, title: "i12 Katong", lat: 51.506, lng: -0.184 },
-];
+
+type Props = {
+  google_api: string;
+  lng: any;
+  lat: any;
+};
  
-const SimpleMap = () => {
+const SimpleMap = ({google_api,lat,lng}:any) => {
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '60vh', width: '100%' }}>
+      <div style={{ height: '70vh', width: '100%' }}>
        <GoogleMapReact
         bootstrapURLKeys={{
           // remove the key if you want to fork
-          key: "AIzaSyC4OHQKtxrOP7nldZiiL1W-SwHXVaGRBYQ",
+          key: google_api,
           language: "en",
           region: "US"
         }}
@@ -30,11 +33,8 @@ const SimpleMap = () => {
         defaultZoom={15}
         distanceToMouse={distanceToMouse}
       >
-        {points.map(({ lat, lng, title,id}) => {
-          return (
-            <MyMarker key={id} lat={lat} lng={lng} text={title} />
-          );
-        })}
+            <MyMarker  lat={lat} lng={lng} text="I12 Katong" />
+    
       </GoogleMapReact>
       </div>
     );

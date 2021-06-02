@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "config_all_categories_s",
+  "info": {
+    "name": "Config All Categories "
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Categories": {
+      "type": "text"
+    }
+  }
+}

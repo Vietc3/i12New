@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stores",
+  "info": {
+    "name": "Stores",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "hero_desktop": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "hero_mobile": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "photos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "location": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "contact_number": {
+      "type": "string"
+    },
+    "opening_hours": {
+      "type": "string"
+    },
+    "accept_rewards_points": {
+      "type": "boolean",
+      "default": false
+    },
+    "accept_e_voucher": {
+      "type": "boolean",
+      "default": false
+    },
+    "accept_shop_online": {
+      "type": "boolean",
+      "default": false
+    },
+    "body": {
+      "type": "text"
+    }
+  }
+}

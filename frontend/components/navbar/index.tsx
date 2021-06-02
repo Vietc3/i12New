@@ -472,11 +472,11 @@ const NAV_ITEMS: Array<NavItem> = [
     },
     {
         label: 'STORE DIRECTORY',
-        href: '/videos',
+        href: '/stores',
     },
     {
-        label: 'REWARD',
-        href: '/videos',
+        label: 'REWARDS',
+        href: '/rewards',
     },
     {
         label: 'ARTS AT i12 KATONG',

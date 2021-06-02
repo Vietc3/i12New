@@ -27,7 +27,6 @@ const EventDetail = ({ banners, event,otherEvents }: Props) => {
             </Center>
         </Box>
     }
-    console.log(otherEvents);
     
     return (
         <>

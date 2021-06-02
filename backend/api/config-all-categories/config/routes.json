@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/config-all-categories",
+      "handler": "config-all-categories.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/config-all-categories",
+      "handler": "config-all-categories.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/config-all-categories",
+      "handler": "config-all-categories.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

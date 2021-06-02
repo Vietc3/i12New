@@ -56,7 +56,7 @@ const ContactPage = ({  banners,content }: Props) => {
       fontFamily="Playfair;">
       Contact Us
     </Text>
-      <Summary text={content.summary} />
+      <Summary content={content} />
   
   </>
   );

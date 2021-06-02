@@ -3,7 +3,6 @@ import { Text, Box, SimpleGrid, Link, Icon, HStack } from "@chakra-ui/react";
 import { URL_BASE } from '../../../constants';
 import Markdown from "markdown-to-jsx";
 import Image from '../../Image';
-import { FaTrain,FaBus,FaCar } from "react-icons/fa";
 import useColorTheme from "../../../hooks/useColorTheme";
 type Props = {
     wifi: string;

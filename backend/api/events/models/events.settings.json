@@ -54,6 +54,21 @@
     "show_homepage": {
       "type": "boolean",
       "default": false
+    },
+    "youtube_url": {
+      "type": "string"
+    },
+    "photos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

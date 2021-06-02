@@ -49,7 +49,6 @@ const StoreCard = ({
             transition="ease-in 0.2s"
             overflow="hidden"
             h="100%"
-
             display="flex"
             {...props}
             flexDirection={flexDirection}

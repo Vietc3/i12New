@@ -1,7 +1,6 @@
 import React from 'react';
-import Banner from '../../components/banner/Banner';
 import { GetStaticProps } from 'next';
-import { useGetAllStores } from '../../helpers/stores';
+import { useGetAllStores,useGetAllCategories } from '../../helpers/stores';
 import { NextSeo } from 'next-seo'
 import { Text } from '@chakra-ui/react';
 import useColorTheme from '../../hooks/useColorTheme';
@@ -9,20 +8,21 @@ import ListStores from '../../components/views/stores/ListStores';
 
 type Props = {
     stores?: any;
+    categories?: any;
     errors?: string;
 };
 
-const StoresPage = ({ stores }: Props) => {
+const StoresPage = ({ stores,categories }: Props) => {
     const colors = useColorTheme()
     return (<>
         <NextSeo
-            title="What's On"
-            description="This is What On Of i12 Katong"
+            title="Stores"
+            description="This is Stores Of i12 Katong"
             canonical="https://www.canonicalurl.ie/"
             openGraph={{
                 url: 'https://www.canonicalurl.ie/',
                 title: 'Home',
-                description: `This is What's On Of i12 Katong`,
+                description: `This is Stores Of i12 Katong`,
                 images: [
                     {
                         url: '/logo.PNG',
@@ -52,7 +52,7 @@ const StoresPage = ({ stores }: Props) => {
             fontFamily="Playfair;">
             STORES
             </Text>
-        <ListStores stores={stores} />
+        <ListStores stores={stores} categories={categories.Categories} />
     </>
     );
 };
@@ -61,7 +61,10 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 
     try {
         let stores = await useGetAllStores();
-        return { props: { stores: stores }, revalidate: 10 };
+        let categories = await useGetAllCategories();
+        console.log(categories);
+        
+        return { props: { stores: stores, categories:categories }, revalidate: 10 };
     } catch (err) {
         return { props: { errors: err.message } };
     }

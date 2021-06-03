@@ -6,7 +6,12 @@ export const getUrlImage = (image: string) => {
 }
 
 export const getCategories = (categories: string) => { 
-    return categories.split(',')
+ const data =  categories.split(',').map((category:any)=>{
+     const result = category.charAt(0) === ' ' ? category.substr(1) : category
+     return result
+ });
+ 
+  return data
 }
 
 export const getProductIds = (ids: string) => { 

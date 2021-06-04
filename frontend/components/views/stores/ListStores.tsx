@@ -66,13 +66,11 @@ const ListStores = ({
             const data = stores.filter((store: any) => Number.isInteger(+store.name[0].toUpperCase()))
             setlistStores(data)
             setlistStoresSearch(data)
-
         }
         else {
             const data = stores.filter((store: any) => store.name[0].toUpperCase() === fristChar)
             setlistStores(data)
             setlistStoresSearch(data)
-
         }
     }, [fristChar]);
 

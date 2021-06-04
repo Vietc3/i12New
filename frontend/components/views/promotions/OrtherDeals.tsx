@@ -1,28 +1,27 @@
-import { Center, Box, Heading, Button, Icon} from "@chakra-ui/react";
+import { Box, Heading,} from "@chakra-ui/react";
 import React from 'react';
 import useColorTheme from '../../../hooks/useColorTheme';
-import InstagramCard from '../../cards/InstagramCard';
+import DealCard from '../../cards/DealCard';
 import Slider from "react-slick";
 import useWindowSize from '../../../hooks/useWindowSize';
-import { FaInstagram } from "react-icons/fa";
+
 type Props = {
-    instagrams: any;
+    deals: any;
     margin?: number;
     containerHeight?: number;
 }
 
-const Instagrams = ({
-    instagrams
+const ListDeals = ({
+    deals
 }: Props) => {
     
     const colors = useColorTheme();
-
     const screenSize = useWindowSize();
 
     const settings = screenSize.width >=950 ? {
         dots: true,
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: deals.length>=4 ? 4 : deals.length,
         slidesToScroll: 1,
         autoplay: true,
         speed: 5000,
@@ -59,12 +58,7 @@ const Instagrams = ({
   
     return (
     <>
-    <Box pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}}>
-    <Box  as="section" pt="4%" h={{base:'500px',lg:'600px'}} mt={{base:'40px',lg:'70px'}} bgColor="#004C45" >
-            <Center>
-            <Icon as={FaInstagram} boxSize="4rem" mt={1}/>
-            </Center>
-      
+        <Box  as="section" pl={{base:'0px',lg:"60px"}} pt={{base:'30px',lg:"60px"}} pr={{base:'0px',lg:"60px"}}>
             <Heading
                 transition="ease-in 0.15s"
                 fontSize="2xl"
@@ -72,25 +66,23 @@ const Instagrams = ({
                 textAlign="center"
                 color={colors.primary}
                 fontFamily="Mulish, sans-serif;">
-                #bistrobites
+               Orther Deals
             </Heading>
             
             <Slider {...settings}>
-                {instagrams.data.data.map((data: any) => (
-                    <Box pt="10%" key={'listEvent'+data.id} >
-                        <InstagramCard
+                {deals.map((deal: any) => (
+                    <Box pt={{base:'5%',lg:'10%'}} key={'listEvent'+deal.id} >
+                        <DealCard
                             column
-                            instagram={data.id}
+                            deal={deal}
+                            idDeal={deal.id}
                             titleFontSize={'1em'}
-                            token={instagrams.token.access_token}
                         />
                     </Box>))}
             </Slider>
         </Box>
-    </Box>
-        
     </>
     )
 }
 
-export default Instagrams;
+export default ListDeals;

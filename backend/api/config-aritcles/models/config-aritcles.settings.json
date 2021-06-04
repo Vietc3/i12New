@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "config_aritcles",
+  "info": {
+    "name": "Config Aritcles",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "summary": {
+      "type": "richtext"
+    }
+  }
+}

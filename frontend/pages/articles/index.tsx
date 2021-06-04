@@ -1,28 +1,32 @@
 import React from 'react';
+import Banner from '../../components/banner/Banner';
 import { GetStaticProps } from 'next';
-import { useGetAllStores,useGetAllCategories } from '../../helpers/stores';
+import { useGetBanners } from '../../helpers/banners';
 import { NextSeo } from 'next-seo'
 import { Text } from '@chakra-ui/react';
 import useColorTheme from '../../hooks/useColorTheme';
-import ListStores from '../../components/views/stores/ListStores';
+import { useGetAllArticles, useGetContentArticles } from '../../helpers/articles';
+import Summary from '../../components/views/articles/Summary';
+import ListArticles from '../../components/views/articles/ListArticles';
 
 type Props = {
-    stores?: any;
-    categories?: any;
+    banners?: any;
+    content?: any;
+    articles?: any;
     errors?: string;
 };
 
-const StoresPage = ({ stores,categories }: Props) => {
+const ArticlesPage = ({ banners, content, articles }: Props) => {
     const colors = useColorTheme()
     return (<>
         <NextSeo
-            title="Stores"
-            description="This is Stores Of i12 Katong"
+            title="Articles"
+            description="This is Articles on i12 Katong"
             canonical="https://www.canonicalurl.ie/"
             openGraph={{
                 url: 'https://www.canonicalurl.ie/',
                 title: 'Home',
-                description: `This is Stores Of i12 Katong`,
+                description: `This is Articles on i12 Katong`,
                 images: [
                     {
                         url: '/logo.PNG',
@@ -41,6 +45,7 @@ const StoresPage = ({ stores,categories }: Props) => {
                 ],
             }}
         />
+        <Banner banner={banners.banner_articles} url={banners.url_banner_articles} />
         <Text
             transition="ease-in 0.15s"
             fontSize="4xl"
@@ -48,11 +53,14 @@ const StoresPage = ({ stores,categories }: Props) => {
             textAlign="center"
             color={colors.primary}
             mt={{ base: "25px", lg: "50px" }}
-            mb={{ base: "25px", lg: "50px" }}
+            mb={{ base: "25px", lg: "35px" }}
             fontFamily="Playfair;">
-            STORES
+            Articles
             </Text>
-        <ListStores stores={stores} categories={categories.Categories} />
+            <Summary text={content.summary} />
+            <ListArticles articles={articles}/>
+
+
     </>
     );
 };
@@ -60,13 +68,13 @@ const StoresPage = ({ stores,categories }: Props) => {
 export const getStaticProps: GetStaticProps = async (context: any) => {
 
     try {
-        let stores = await useGetAllStores();
-        let categories = await useGetAllCategories();
- 
-        return { props: { stores: stores, categories:categories }, revalidate: 10 };
+        let banner = await useGetBanners();
+        let content = await useGetContentArticles();
+        let articles = await useGetAllArticles();
+        return { props: { banners: banner, content: content, articles:articles}, revalidate: 10 };
     } catch (err) {
         return { props: { errors: err.message } };
     }
 };
 
-export default StoresPage;
+export default ArticlesPage;

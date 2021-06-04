@@ -44,6 +44,21 @@
     },
     "amentities_charging_point": {
       "type": "richtext"
+    },
+    "banner_url": {
+      "type": "string"
+    },
+    "banner": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

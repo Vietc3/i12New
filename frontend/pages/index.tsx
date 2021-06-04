@@ -3,6 +3,7 @@ import TrendingCard from '../components/views/homepage/Trending';
 import ListEvents from '../components/views/homepage/ListEvents';
 import ListDeals from '../components/views/homepage/ListDeals';
 import Instagrams from '../components/views/homepage/Instagrams';
+import ParkingCar from '../components/views/homepage/ParkingCar';
 import Banner from '../components/banner/Banner';
 import { GetStaticProps } from 'next';
 import { useGetAllCarousels } from '../helpers/carousels';
@@ -10,7 +11,7 @@ import { useGetEventsByParams } from '../helpers/events';
 import { useGetDealsByParams } from '../helpers/deals';
 import { useGetBanners } from '../helpers/banners';
 import { useGetInstagram } from '../helpers/instagram';
-import { NextSeo } from 'next-seo'
+import { NextSeo } from 'next-seo';
 
 type Props = {
   featured?: any;
@@ -50,6 +51,7 @@ const IndexPage = ({ carousels, events,deals, banners,instagrams }: Props) => {
         ],
       }}
     />
+    <ParkingCar/>
     <TrendingCard carousels={carousels} />
     <ListEvents events={events} />
     <ListDeals deals={deals} />

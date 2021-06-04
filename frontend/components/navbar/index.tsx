@@ -480,7 +480,7 @@ const NAV_ITEMS: Array<NavItem> = [
     },
     {
         label: 'ARTS AT i12 KATONG',
-        href: '/videos',
+        href: '/articles',
     },
     {
         label: 'ABOUT US',

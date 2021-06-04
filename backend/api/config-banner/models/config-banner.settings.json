@@ -86,6 +86,51 @@
     },
     "url_banner_event_details": {
       "type": "string"
+    },
+    "url_banner_articles": {
+      "type": "string"
+    },
+    "banner_articles": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "url_banner_store_details": {
+      "type": "string"
+    },
+    "banner_store_details": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "url_banner_article_details": {
+      "type": "string"
+    },
+    "banner_article_details": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
     chakra,
     Box,
     Flex,
+    Checkbox,
     useColorModeValue,
     SimpleGrid,
     GridItem,
@@ -23,7 +24,8 @@ import { URL_BASE } from '../../../constants';
 import Markdown from "markdown-to-jsx";
 import Image from '../../Image';
 import useColorTheme from "../../../hooks/useColorTheme";
-import { FaMapMarkerAlt,FaPhoneAlt,FaClock } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaClock } from "react-icons/fa";
+import ReCAPTCHA from "react-google-recaptcha";
 type Props = {
     content?: any;
 };
@@ -49,6 +51,21 @@ const Summary = ({ content }: Props) => {
     const colors = useColorTheme();
     const urlImageMarkdown = (text: string) => {
         return text.split('/uploads/').join(`${URL_BASE}/uploads/`);
+    }
+    const recaptchaRef = useRef('');
+
+    const onReCAPTCHAChange = (captchaCode: string) => {
+        // If the reCAPTCHA code is null or undefined indicating that
+        // the reCAPTCHA was expired then return early
+        if (!captchaCode) {
+            return;
+        }
+        // Else reCAPTCHA was executed successfully so proceed with the 
+        // alert
+        alert(`Hey,Done}`);
+        // Reset the reCAPTCHA so that it can be executed again if user 
+        // submits another email.
+        recaptchaRef.current.reset();
     }
     return (
         <>
@@ -76,10 +93,10 @@ const Summary = ({ content }: Props) => {
                                 overflow={{ sm: "hidden" }}
                             >
                                 <Stack
-                                    
-                                  
+
+
                                     spacing={10}
-                            
+
                                 >
                                     <SimpleGrid columns={3} spacing={6}>
                                         <FormControl as={GridItem} colSpan={[3, 2]}>
@@ -240,7 +257,37 @@ const Summary = ({ content }: Props) => {
                                                 </Stack>
                                             </Flex>
                                         </FormControl>
+
                                     </SimpleGrid>
+                                    <SimpleGrid columns={3} spacing={6}>
+                                        <FormControl as={GridItem} colSpan={[3, 2]}>
+
+
+                                            <Flex alignItems="start">
+                                                <Flex alignItems="center" h={5}>
+                                                    <Checkbox colorScheme="green" defaultIsChecked>
+                                                      
+                                                    </Checkbox>
+                                                </Flex>
+                                                <Box ml={3} fontSize="sm">
+                                                    <Text color={useColorModeValue("gray.500", "gray.400")}>
+                                                        I agree to the Data Protection Statement. The Data Protection Statement
+                                                        containt important information on the types of data collected and now
+                                                        the may be used, including for purposes of data analytics
+                                                </Text>
+
+                                                </Box>
+                                            </Flex>
+                                        </FormControl>
+                                    </SimpleGrid>
+                                    <Box>
+                                        <ReCAPTCHA
+                                            ref={recaptchaRef}
+                                            sitekey={content.reCaptcha_site_key}
+                                            onChange={onReCAPTCHAChange}
+                                        />
+                                    </Box>
+
                                     <Button w="40%" borderRadius={20} bgColor={colors.primary} color="white" variant="solid">
                                         Submit
                                     </Button>
@@ -251,107 +298,107 @@ const Summary = ({ content }: Props) => {
 
                         <Stack spacing="60px" >
                             <Box>
-                            <HStack spacing="10px">
-                                <Icon color={colors.primary} as={FaMapMarkerAlt} boxSize="2rem" />
-                                <Text
-                                    transition="ease-in 0.15s"
-                                    fontSize="xl"
-                                    fontWeight="bold"
-                                    bottom="30px"
-                                    textAlign="center"
-                                    color={colors.primary}
-                                    mt={{ base: "25px", lg: "50px" }}
-                                    mb={{ base: "25px", lg: "50px" }}
-                                >
-                                    Mall Address
+                                <HStack spacing="10px">
+                                    <Icon color={colors.primary} as={FaMapMarkerAlt} boxSize="2rem" />
+                                    <Text
+                                        transition="ease-in 0.15s"
+                                        fontSize="xl"
+                                        fontWeight="bold"
+                                        bottom="30px"
+                                        textAlign="center"
+                                        color={colors.primary}
+                                        mt={{ base: "25px", lg: "50px" }}
+                                        mb={{ base: "25px", lg: "50px" }}
+                                    >
+                                        Mall Address
                             </Text>
-                            </HStack>
-                            <Box mt={5}>
-                            <Markdown options={{
-                                    overrides: {
-                                        a: {
-                                            component: MyParagraph,
-                                            props: {
-                                                color: 'blue',
+                                </HStack>
+                                <Box mt={5}>
+                                    <Markdown options={{
+                                        overrides: {
+                                            a: {
+                                                component: MyParagraph,
+                                                props: {
+                                                    color: 'blue',
+                                                },
+                                            },
+                                            img: {
+                                                component: MyIMG,
                                             },
                                         },
-                                        img: {
-                                            component: MyIMG,
-                                        },
-                                    },
-                                }}>
-                                    {urlImageMarkdown(content.mall_address)}
-                                </Markdown>
-                            </Box>
+                                    }}>
+                                        {urlImageMarkdown(content.mall_address)}
+                                    </Markdown>
+                                </Box>
                             </Box>
                             <Box>
-                            <HStack spacing="10px">
-                                <Icon color={colors.primary} as={FaPhoneAlt} boxSize="2rem" />
-                                <Text
-                                    transition="ease-in 0.15s"
-                                    fontSize="xl"
-                                    fontWeight="bold"
-                                    bottom="30px"
-                                    textAlign="center"
-                                    color={colors.primary}
-                                    mt={{ base: "25px", lg: "50px" }}
-                                    mb={{ base: "25px", lg: "50px" }}
-                                >
-                                    Mall Customer Service Phone Number
+                                <HStack spacing="10px">
+                                    <Icon color={colors.primary} as={FaPhoneAlt} boxSize="2rem" />
+                                    <Text
+                                        transition="ease-in 0.15s"
+                                        fontSize="xl"
+                                        fontWeight="bold"
+                                        bottom="30px"
+                                        textAlign="center"
+                                        color={colors.primary}
+                                        mt={{ base: "25px", lg: "50px" }}
+                                        mb={{ base: "25px", lg: "50px" }}
+                                    >
+                                        Mall Customer Service Phone Number
                             </Text>
-                            </HStack>
-                            <Box mt={5}>
-                            <Markdown options={{
-                                    overrides: {
-                                        a: {
-                                            component: MyParagraph,
-                                            props: {
-                                                color: 'blue',
+                                </HStack>
+                                <Box mt={5}>
+                                    <Markdown options={{
+                                        overrides: {
+                                            a: {
+                                                component: MyParagraph,
+                                                props: {
+                                                    color: 'blue',
+                                                },
+                                            },
+                                            img: {
+                                                component: MyIMG,
                                             },
                                         },
-                                        img: {
-                                            component: MyIMG,
-                                        },
-                                    },
-                                }}>
-                                    {urlImageMarkdown(content.phone_customer_service)}
-                                </Markdown>
-                            </Box>
-                          
+                                    }}>
+                                        {urlImageMarkdown(content.phone_customer_service)}
+                                    </Markdown>
+                                </Box>
+
                             </Box>
                             <Box>
-                            <HStack spacing="10px">
-                                <Icon color={colors.primary} as={FaClock} boxSize="2rem" />
-                                <Text
-                                    transition="ease-in 0.15s"
-                                    fontSize="xl"
-                                    fontWeight="bold"
-                                    bottom="30px"
-                                    textAlign="center"
-                                    color={colors.primary}
-                                    mt={{ base: "25px", lg: "50px" }}
-                                    mb={{ base: "25px", lg: "50px" }}
-                                >
-                                    Customer Service Counter Operating Hours 
+                                <HStack spacing="10px">
+                                    <Icon color={colors.primary} as={FaClock} boxSize="2rem" />
+                                    <Text
+                                        transition="ease-in 0.15s"
+                                        fontSize="xl"
+                                        fontWeight="bold"
+                                        bottom="30px"
+                                        textAlign="center"
+                                        color={colors.primary}
+                                        mt={{ base: "25px", lg: "50px" }}
+                                        mb={{ base: "25px", lg: "50px" }}
+                                    >
+                                        Customer Service Counter Operating Hours
                             </Text>
-                            </HStack>
-                            <Box mt={5}>
-                            <Markdown options={{
-                                    overrides: {
-                                        a: {
-                                            component: MyParagraph,
-                                            props: {
-                                                color: 'blue',
+                                </HStack>
+                                <Box mt={5}>
+                                    <Markdown options={{
+                                        overrides: {
+                                            a: {
+                                                component: MyParagraph,
+                                                props: {
+                                                    color: 'blue',
+                                                },
+                                            },
+                                            img: {
+                                                component: MyIMG,
                                             },
                                         },
-                                        img: {
-                                            component: MyIMG,
-                                        },
-                                    },
-                                }}>
-                                    {urlImageMarkdown(content.counter_operating_hours)}
-                                </Markdown>
-                            </Box>       
+                                    }}>
+                                        {urlImageMarkdown(content.counter_operating_hours)}
+                                    </Markdown>
+                                </Box>
                             </Box>
                         </Stack>
                     </SimpleGrid>

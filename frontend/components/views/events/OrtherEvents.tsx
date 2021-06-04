@@ -58,10 +58,10 @@ const ListEvents = ({
   
     return (
     <>
-        <Box  as="section" pl={{base:'0px',lg:"60px"}} pr={{base:'0px',lg:"60px"}}>
+        <Box  as="section" pl={{base:'0px',lg:"60px"}} pt={{base:'30px',lg:"60px"}} pr={{base:'0px',lg:"60px"}}>
             <Heading
                 transition="ease-in 0.15s"
-                fontSize="4xl"
+                fontSize="2xl"
                 bottom="30px"
                 textAlign="center"
                 color={colors.primary}

@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "config_contact_uses",
   "info": {
-    "name": "Config Contact Us"
+    "name": "Config Contact Us",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -22,6 +23,27 @@
     },
     "counter_operating_hours": {
       "type": "richtext"
+    },
+    "banner_url": {
+      "type": "string"
+    },
+    "banner": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "reCaptcha_site_key": {
+      "type": "string"
+    },
+    "reCaptcha_secret_key": {
+      "type": "string"
     }
   }
 }

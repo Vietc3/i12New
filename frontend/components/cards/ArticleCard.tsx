@@ -11,34 +11,32 @@ import { getUrlImage } from '../../helpers/commonFuction';
 import { AiFillCalendar } from "react-icons/ai";
 
 interface Props extends BoxProps {
-    deal: any;
+    article: any;
     column?: boolean;
     height?: number | string;
     skeleton?: boolean;
     imgBoxSize?: string | number;
     titleFontSize?: number | string;
-    idDeal?: string;
+    idArticle?: string;
 }
 
 type FlexDirection = 'row' | 'column' | undefined;
 
-const DealCard = ({
-    deal,
+const ArticleCard = ({
+    article,
     column = false,
     imgBoxSize,
     skeleton = false,
     titleFontSize = '1.4rem',
-    idDeal,
+    idArticle,
     ...props
 }: Props) => {
     const [hover, setHover] = useState(false);
     const colors = useColorTheme();
     const flexDirection: FlexDirection = useBreakpointValue({ base: 'column', md: column ? 'column' : 'row' });
-    const vaildForm = moment(deal.start_date).format("Do MMM");
-    const validTo = moment(deal.end_date).format("Do MMM");
     const router = useRouter();
     const onClickEvent = () => {
-        router.push(`/promotions/${idDeal}`);
+        router.push(`/articles/${idArticle}`);
         window.scrollTo(0, 0);
     };
 
@@ -53,7 +51,6 @@ const DealCard = ({
             transition="ease-in 0.2s"
             overflow="hidden"
             h="100%"
-
             display="flex"
             {...props}
             flexDirection={flexDirection}
@@ -63,8 +60,8 @@ const DealCard = ({
                 <Image
                     width="100%"
                     height={{ base: 80, lg: column ? '15rem' : 40 }}
-                    src={getUrlImage(deal.hero_desktop.url)}
-                    alt={'Photo of ' + deal.title}
+                    src={getUrlImage(article.hero_desktop.url)}
+                    alt={'Photo of ' + article.article_name}
                 // objectFit="cover"      
                 />
             </Box>
@@ -73,44 +70,32 @@ const DealCard = ({
                 <Image
                     width="100%"
                     height={{ base: 60 }}
-                    src={getUrlImage(deal.hero_mobile.url)}
-                    alt={'Photo of ' + deal.title}
+                    src={getUrlImage(article.hero_mobile.url)}
+                    alt={'Photo of ' + article.article_name}
                 // objectFit="cover" 
                 />
             </Box>
             <Box mt={{ base: 4, md: 4 }} color={colors.primary}>
-                <Box h="50px">
+                <Box >
                     <Text
                         fontWeight="bold"
-                        textTransform="uppercase"
                         fontSize="15px"
                         letterSpacing="wide"
                     >
-                        {deal.title}
+                        {article.article_name}
                     </Text>
                 </Box>
-                <Flex >
-                    <Icon as={AiFillCalendar} boxSize="2rem" mt={1} />
-                    <Text pl={1} mt={2} fontSize="md" >
-                        {`${vaildForm}-${validTo}`}
+                <Box >
+                    <Text
+                        fontSize="15px"
+                        letterSpacing="wide"
+                    >
+                        {article.artist_name}
                     </Text>
-
-                </Flex>
-
-                {/* <Text
-                    mt={1}
-                    display="block"
-                    fontSize="lg"
-                    lineHeight="normal"
-                    fontWeight="semibold"
-                    href="#"
-                >
-                    {_.upperFirst(post.sumary)}
-                </Text> */}
-
+                </Box>
             </Box>
         </Card>
     );
 };
 
-export default DealCard;
+export default ArticleCard;

@@ -43,6 +43,7 @@ const Layout: React.FC<Props> = ({ children, title = 'Modern News', ...props }) 
                 <header >
                     <Navbar />
                 </header>
+                
                 <Box as="main" minH={'80vh'} maxW={styles.mainMaxWidth} style={{ paddingTop: '0px !important' }} marginX="auto" {...props}>
                     <ToastContainer autoClose={2000} />
                     {children}

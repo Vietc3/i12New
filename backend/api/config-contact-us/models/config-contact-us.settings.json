@@ -44,6 +44,9 @@
     },
     "reCaptcha_secret_key": {
       "type": "string"
+    },
+    "categories_of_message": {
+      "type": "string"
     }
   }
 }

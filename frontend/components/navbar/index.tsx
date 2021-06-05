@@ -41,6 +41,7 @@ import { SearchKeyword } from '../../recoil/search';
 import { useRouter } from 'next/router';
 import Logo from '../Logo';
 import React, { useState, useEffect } from 'react';
+import Styles from '../../styles';
 import { useUrlSocial } from '../../helpers/contentFooter';
 
 
@@ -136,9 +137,10 @@ export default function WithSubnavigation() {
                     
                 </Flex>
 
-                <Flex display={{ base: 'none',md:'flex', lg: 'flex' }} pt={3} flex={{ base: 1 }} justify={{ base: 'center', md: 'end' }}>
-                    <Spacer></Spacer>
+                <Flex  pt={3} flex={{ base: 1 }} justify={{ base: 'center', md: 'end' }}>
+                <Spacer></Spacer>
                 <Stack
+                display={{ base: 'flex',md:'flex', lg: 'flex' }}
                     flex={{ base: 1, md: 0 }}
                     justify={'flex-end'}
                     direction={'row'}
@@ -154,26 +156,6 @@ export default function WithSubnavigation() {
                     />
 
                 </Stack>
-                    {/* <chakra.form w="40%" onSubmit={formik.handleSubmit}>
-                        <InputGroup w="100%">
-                            <InputRightElement
-                                w="15%"
-                                borderRadius={30}
-                                bgColor="black"
-                            >
-                                <Button
-                                    type="submit"
-                                    zIndex="15"
-                                    leftIcon={<AiOutlineSearch />} colorScheme="black" variant="solid">
-                                </Button>
-                            </InputRightElement>
-                            <Input
-                                id="keyword"
-                                name="keyword"
-                                onChange={formik.handleChange}
-                                value={formik.values.keyword} bgColor="white" color="black" borderRadius={25} type="tel" placeholder="Search Keyword" />
-                        </InputGroup>
-                    </chakra.form> */}
                 </Flex>
             </Flex>
 
@@ -184,8 +166,8 @@ export default function WithSubnavigation() {
                      onClickSocial(url)
                 }} onClickSubscribe={() => onClickSubscribe()} />
             </Collapse>
-            <Collapse in={OpenSearch} animateOpacity>
-                <Box p={2} flex={{ base: 1 }} justify={{ base: 'center', md: 'end' }}>
+            <Collapse  in={OpenSearch} animateOpacity>
+                <Box  pl={{base:2,md:5,lg:"auto"}} pr={{base:2,md:5,lg:"auto"}} maxW={styles.mainMaxWidth} style={{ paddingTop: '0px !important' }} marginX="auto" mb={2}  flex={{ base: 1 }} justify={{ base: 'center', md: 'end' }}>
                     <Flex>
                         <Spacer />
                         <IconButton
@@ -196,7 +178,6 @@ export default function WithSubnavigation() {
                             variant={'ghost'}
                             aria-label={'Toggle Navigation'}
                         />
-
                     </Flex>
 
 
@@ -204,7 +185,7 @@ export default function WithSubnavigation() {
                         <InputGroup w="100%">
                             <InputRightElement
                                 w="15%"
-                                color={colors.primary}
+                                bgColor="black"
                             >
                                 <Button
                                     type="submit"
@@ -239,7 +220,7 @@ const DesktopNav = () => {
                             _focus={{borderBottom:"1.5px solid #A68340", borderTop:"0px", borderLeft:"0px", borderRight:"0px"}}
                                 p={2}
                                 href={navItem.href ?? '#'}
-                                fontSize={ screenSize.width <=1024 ? (screenSize.width <=768 ? "7px" : "10px"):"15px"}
+                                fontSize={ screenSize.width <=1168 ? (screenSize.width <=918 ? "7px" : "10px"):"15px"}
                                 fontWeight={800}
                                 color={colors.primary}
                                 _hover={{
@@ -286,7 +267,7 @@ const DesktopSubNav = ({ label, href }: NavItem) => {
             <Text
                 textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
                 fontWeight="bold"
-                color={colors.primary}>
+             >
                 {label}
             </Text>
 
@@ -312,9 +293,7 @@ const MobileNav = ({ onClickSubscribe, onClickSocial, urlButtonSocial }: PropsMo
             {NAV_ITEMS.map((navItem) => (
                 <MobileNavItem key={navItem.label} {...navItem} />
             ))}
-            <Button display={{ base: 'flex' }} onClick={() => onClickSubscribe()} borderRadius={30} colorScheme="red" variant="solid">
-                SUBSCRIBE
-            </Button>
+
             <HStack
                 spacing="0"
             >

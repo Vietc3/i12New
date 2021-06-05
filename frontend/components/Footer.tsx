@@ -61,7 +61,7 @@ const Footer: React.FC<Props> = () => {
                     <Spacer/>
                     <VStack
                     pt={10}
-                    pl={10}
+                   
                         spacing={4}
                         align="stretch"
                     > <Text fontSize={'15px'} 

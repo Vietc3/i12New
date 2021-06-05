@@ -16,9 +16,9 @@ const ParkingCar = () => {
                 _hover={{ bg: colors.primary, color: 'white' }}
                 borderRightRadius="30px" fontSize="15px" color="#f5e1a4"
                 borderRadius="0px" top="80%" w="55px" bg="#4f2c1d" display={isOpen ? 'none' : 'flex'}
-                position="fixed" onClick={onToggle}>P</Button>
+                zIndex="100"  position="fixed" onClick={onToggle}>P</Button>
 
-            <Box display={isOpen ? 'flex' : 'none'} zIndex="100" borderRightRadius="50px" top="80%" w="10%" position="fixed" height="80px" bg="#4f2c1d" >
+            <Box display={isOpen ? 'flex' : 'none'} zIndex="100" borderRightRadius="50px" top="80%" w="200px" position="fixed" height="80px" bg="#4f2c1d" >
             <HStack spacing="5px">
                 <VStack justifyContent="center" spacing="1px">
                     <HStack spacing="5px">

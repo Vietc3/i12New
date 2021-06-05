@@ -59,7 +59,7 @@ const EventCard = ({
             <Box  display={{ base: 'none', lg: 'flex' }}>
                 <Image
                      width="100%"
-                     height={{ base: 80, lg: column ? '15rem' : 40 }}
+                     height={{ base: 40,md:35, lg: 60 }}
                      src={getUrlImage(event.hero_desktop.url)}
                     alt={'Photo of ' + event.title}
                     // objectFit="cover"      
@@ -69,7 +69,7 @@ const EventCard = ({
              
                 <Image
                      width="100%"
-                     height={{ base: 60 }}
+                     height={40}
                      src={getUrlImage(event.hero_mobile.url)}
                     alt={'Photo of ' + event.title}
                     // objectFit="cover" 

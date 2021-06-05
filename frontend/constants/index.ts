@@ -87,4 +87,4 @@ export const FRIST_CHARACTERS = [
 ];
 
 export const URL_BASE = process.env.NEXT_PUBLIC_BASE_URL;
-export const URL_BASE_PRODUCT = process.env.NEXT_PUBLIC_BASE_URL_PRODUCT;
+

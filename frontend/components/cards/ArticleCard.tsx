@@ -59,7 +59,7 @@ const ArticleCard = ({
             <Box display={{ base: 'none', lg: 'flex' }}>
                 <Image
                     width="100%"
-                    height={{ base: 80, lg: column ? '15rem' : 40 }}
+                    height={{ base: 40,md:40, lg: 60 }}
                     src={getUrlImage(article.hero_desktop.url)}
                     alt={'Photo of ' + article.article_name}
                 // objectFit="cover"      

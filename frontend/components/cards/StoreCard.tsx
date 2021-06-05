@@ -57,7 +57,7 @@ const StoreCard = ({
             <Box display={{ base: 'none', lg: 'flex' }} border="1px" borderColor="gray.300">
                 <Image
                     width="100%"
-                    height={{ base: 80, lg: column ? '15rem' : 40 }}
+                    height={{ base: 40,md:35, lg: 60 }}
                     src={getUrlImage(store.hero_desktop.url)}
                     alt={'Photo of ' + store.name}
                     objectFit="cover"
@@ -67,7 +67,7 @@ const StoreCard = ({
 
                 <Image
                     width="100%"
-                    height={{ base: 60 }}
+                    height={{ base: 40 }}
                     src={getUrlImage(store.hero_mobile.url)}
                     alt={'Photo of ' + store.name}
                     objectFit="cover"

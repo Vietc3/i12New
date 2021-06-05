@@ -62,7 +62,7 @@ const DealCard = ({
             <Box display={{ base: 'none', lg: 'flex' }}>
                 <Image
                     width="100%"
-                    height={{ base: 80, lg: column ? '15rem' : 40 }}
+                    height={{ base: 40,md:35, lg: 60 }}
                     src={getUrlImage(deal.hero_desktop.url)}
                     alt={'Photo of ' + deal.title}
                 // objectFit="cover"      
@@ -72,7 +72,7 @@ const DealCard = ({
 
                 <Image
                     width="100%"
-                    height={{ base: 60 }}
+                    height={40}
                     src={getUrlImage(deal.hero_mobile.url)}
                     alt={'Photo of ' + deal.title}
                 // objectFit="cover" 

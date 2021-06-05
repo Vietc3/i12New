@@ -75,7 +75,7 @@ const InstagramCard = ({
 
                 <Image
                     width="100%"
-                    height={{ base: 60 }}
+                    height={{ base: 55 }}
                     src={data.media_url}
                     alt={'Photo of ' + data.caption}
                 // objectFit="cover" 

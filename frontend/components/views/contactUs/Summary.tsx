@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
     chakra,
     Box,
@@ -26,6 +26,11 @@ import Image from '../../Image';
 import useColorTheme from "../../../hooks/useColorTheme";
 import { FaMapMarkerAlt, FaPhoneAlt, FaClock } from "react-icons/fa";
 import ReCAPTCHA from "react-google-recaptcha";
+import { getCategories } from "../../../helpers/commonFuction";
+import { useFormik } from 'formik';
+import { uploadImage,useContact } from '../../../helpers/contact';
+import { toast } from "react-toastify";
+
 type Props = {
     content?: any;
 };
@@ -49,10 +54,21 @@ const MyIMG = ({ children, ...props }: any) => {
 
 const Summary = ({ content }: Props) => {
     const colors = useColorTheme();
+    const recaptchaRef = useRef('');
+    const categoriesOfMessage = getCategories(content.categories_of_message);
+    const [file, setFile] = useState(null);
+    const [isVerify, setIsVerify] = useState(false);
+    const [isConfirm, setIsConfirm] = useState(false);
+
     const urlImageMarkdown = (text: string) => {
         return text.split('/uploads/').join(`${URL_BASE}/uploads/`);
     }
-    const recaptchaRef = useRef('');
+
+    const handleChangeFile = (e: any) => {
+        console.log(e.target.files[0]);
+
+        setFile(e.target.files[0])
+    }
 
     const onReCAPTCHAChange = (captchaCode: string) => {
         // If the reCAPTCHA code is null or undefined indicating that
@@ -62,11 +78,42 @@ const Summary = ({ content }: Props) => {
         }
         // Else reCAPTCHA was executed successfully so proceed with the 
         // alert
-        alert(`Hey,Done}`);
-        // Reset the reCAPTCHA so that it can be executed again if user 
-        // submits another email.
-        recaptchaRef.current.reset();
+        setIsVerify(true)
+     
     }
+    const formik = useFormik({
+        initialValues: {
+            name: "",
+            email: "",
+            type_enquiry: "",
+            contact_number: "",
+            file_upload_url:"",
+        },
+        onSubmit: async values => {            
+            if(isVerify){
+                if(isConfirm){
+                    if(values.name !=="" ||values.email !=="" ||values.type_enquiry !=="" ||values.contact_number !=="" ){
+                        const result = await uploadImage(file)
+                        if(result.status===200){
+                            values.file_upload_url= result.data[0].url
+                            useContact(values)
+                        }else{
+                            toast.warning("Send Failed")
+                        }
+                    }else{
+                        toast.warning("Please enter information!")
+                    }
+                   
+                }else{
+                    toast.warning("Please agree!")
+                }
+               
+            }else{
+                toast.warning("Please verify with reCaptcha!")
+            }
+          
+        },
+    });
     return (
         <>
             <Box pl={{ base: '0px', lg: "60px" }} pr={{ base: '0px', lg: "60px" }}>
@@ -91,12 +138,10 @@ const Summary = ({ content }: Props) => {
                             <chakra.form
                                 method="POST"
                                 overflow={{ sm: "hidden" }}
+                                onSubmit={formik.handleSubmit}
                             >
                                 <Stack
-
-
                                     spacing={10}
-
                                 >
                                     <SimpleGrid columns={3} spacing={6}>
                                         <FormControl as={GridItem} colSpan={[3, 2]}>
@@ -109,8 +154,11 @@ const Summary = ({ content }: Props) => {
                                             </FormLabel>
 
                                             <Input
-                                                type="tel"
-                                                placeholder="www.example.com"
+                                                onChange={formik.handleChange}
+                                                value={formik.values.name}
+                                                type="text"
+                                                placeholder="John"
+                                                id="name"
                                                 focusBorderColor="brand.400"
                                                 w="100%"
                                             />
@@ -129,7 +177,11 @@ const Summary = ({ content }: Props) => {
                                             </FormLabel>
 
                                             <Input
-                                                type="tel"
+                                                type="text"
+                                                name="email"
+                                                id="email"
+                                                onChange={formik.handleChange}
+                                                value={formik.values.email}
                                                 placeholder="john@doe.com"
                                                 focusBorderColor="brand.400"
                                                 w="100%"
@@ -149,6 +201,10 @@ const Summary = ({ content }: Props) => {
                                             </FormLabel>
 
                                             <Input
+                                                name="contact_number"
+                                                id="contact_number"
+                                                onChange={formik.handleChange}
+                                                value={formik.values.contact_number}
                                                 type="tel"
                                                 placeholder="90123412"
                                                 focusBorderColor="brand.400"
@@ -160,7 +216,6 @@ const Summary = ({ content }: Props) => {
                                     <SimpleGrid columns={3} spacing={6}>
                                         <FormControl as={GridItem} colSpan={[3, 2]}>
                                             <FormLabel
-                                                for="country"
                                                 fontSize="sm"
                                                 fontWeight="md"
                                                 color={useColorModeValue("gray.700", "gray.50")}
@@ -168,19 +223,22 @@ const Summary = ({ content }: Props) => {
                                                 Type of Enquiry
                                             </FormLabel>
                                             <Select
-                                                id="typeEnquiry"
-                                                name="typeEnquiry"
+                                                id="type_enquiry"
+                                                name="type_enquiry"
                                                 autoComplete="Type Of Enquiry"
-                                                placeholder="General enquiries/feeback"
                                                 mt={1}
                                                 focusBorderColor="brand.400"
                                                 shadow="sm"
                                                 size="sm"
                                                 rounded="md"
+                                                onChange={formik.handleChange}
+                                                value={formik.values.type_enquiry}
+
                                             >
-                                                <option>United States</option>
-                                                <option>Canada</option>
-                                                <option>Mexico</option>
+                                                {
+                                                    categoriesOfMessage.map((category: any) => <option key={category} value={category}>{category}</option>)
+                                                }
+
                                             </Select>
                                         </FormControl>
                                     </SimpleGrid>
@@ -217,7 +275,7 @@ const Summary = ({ content }: Props) => {
                                                         <path
                                                             d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
                                                             strokeWidth="2"
-                                                            strokLinecap="round"
+
                                                             strokeLinejoin="round"
                                                         />
                                                     </Icon>
@@ -227,7 +285,6 @@ const Summary = ({ content }: Props) => {
                                                         alignItems="baseline"
                                                     >
                                                         <chakra.label
-                                                            for="file-upload"
                                                             cursor="pointer"
                                                             rounded="md"
                                                             fontSize="md"
@@ -243,6 +300,7 @@ const Summary = ({ content }: Props) => {
                                                                     id="file-upload"
                                                                     name="file-upload"
                                                                     type="file"
+                                                                    onChange={(e) => handleChangeFile(e)}
                                                                 />
                                                             </VisuallyHidden>
                                                         </chakra.label>
@@ -265,8 +323,10 @@ const Summary = ({ content }: Props) => {
 
                                             <Flex alignItems="start">
                                                 <Flex alignItems="center" h={5}>
-                                                    <Checkbox colorScheme="green" defaultIsChecked>
-                                                      
+                                                    <Checkbox colorScheme="green"
+                                                    onChange={()=>{setIsConfirm(!isConfirm)}}
+                                                    name="isComfirm">
+
                                                     </Checkbox>
                                                 </Flex>
                                                 <Box ml={3} fontSize="sm">
@@ -288,7 +348,7 @@ const Summary = ({ content }: Props) => {
                                         />
                                     </Box>
 
-                                    <Button w="40%" borderRadius={20} bgColor={colors.primary} color="white" variant="solid">
+                                    <Button w="40%" type="submit" borderRadius={20} bgColor={colors.primary} color="white" variant="solid">
                                         Submit
                                     </Button>
                                 </Stack>

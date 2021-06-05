@@ -92,7 +92,7 @@ const PostCard = ({ idArticle, article }: Props) => {
 
             </Box>
           {
-            article.button ? <Center pt={5}>
+            article.button ? <Center pt={{base:0,md:0,lg:2}}>
             <Button w="40%" borderRadius={20} bgColor={colors.primary} color="#e2cea5" variant="solid">
               {article.title_button}
             </Button>
